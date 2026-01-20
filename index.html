@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Battleship</title>
+
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <h1>BATTLESHIP</h1>
+
+    <section id="instructions">
+    <p>Sink all enemy ships to win!</p>
+  </section>
+
+    <p id="turn"></p>
+
+    <div id="game-boards"></div>
+
+    <div id="options-container">
+      <div class="destroyer-preview destroyer"></div>
+      <div class="submarine-preview submarine"></div>
+      <div class="cruiser-preview cruiser"></div>
+      <div class="battleship-preview battleship"></div>
+      <div class="carrier-preview carrier"></div>
+    </div>
+
+  <div id="controls">
+    <button id="start-button">Start Game</button>
+    <button id="flip-button">Flip</button>
+  </div>
+
+
+  <!-- Link JavaScript (important: at the bottom) -->
+  <script src="js/app.js"></script>
+</body>
+</html>
