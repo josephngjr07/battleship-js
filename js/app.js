@@ -48,11 +48,14 @@ class Ship {
 
 const destroyer = new Ship('destroyer', 2)
 const submarine = new Ship('submarine', 3)
-const cruiser = new Ship('crusier', 3)
+const cruiser = new Ship('cruiser', 3)
 const battleship = new Ship('battleship', 4)
 const carrier = new Ship('carrier', 5)
 
+
+
 const ships = [destroyer, submarine, cruiser, battleship, carrier]
+
 
 //Random Generated Computer Ships
 
@@ -63,7 +66,7 @@ function addShipPiece(ship) {
     let randomStartIndex = Math.floor(Math.random() * width * width)
     
     let shipBlocks = []
-    
+
    for (let i = 0; i < ship.length; i++)
         if (isHorizontal) {
             shipBlocks.push(allBoardBlocks[Number(randomStartIndex) + i])
@@ -77,4 +80,4 @@ function addShipPiece(ship) {
     })   
 }
 
-addShipPiece(destroyer) 
+ships.forEach(ship => addShipPiece(ship))
