@@ -57,27 +57,57 @@ const carrier = new Ship('carrier', 5)
 const ships = [destroyer, submarine, cruiser, battleship, carrier]
 
 
-//Random Generated Computer Ships
+// Creating Ship in an Array
+function buildShip(isHorizontal, startIndex, length, width) {
+  const shipBlocks = []
+  for (let i = 0; i < length; i++) {
+    if (isHorizontal) {
+      shipBlocks.push(startIndex + i)
+    } else {
+      shipBlocks.push(startIndex + i * width)
+    }
+  }
+  return shipBlocks
+}
 
+// Overflow Check (Does this fit on the board?)
+function fitsOnBoard(startIndex, isHorizontal, length, width) {
+  const startCol = startIndex % width
+  const startRow = Math.floor(startIndex / width)
+
+  return isHorizontal
+    ? startCol + length <= width
+    : startRow + length <= width
+}
+
+// Overlapping checks
+function overlaps(shipBlocks, blocks) {
+  return shipBlocks.some(i => blocks[i].classList.contains("taken"))
+}
+
+// Function to Add ships on the board (with Checks)
 function addShipPiece(ship) {
-    const allBoardBlocks = document.querySelectorAll('#computer div')
-    let randomBoolean = Math.random() < 0.5
-    let isHorizontal = randomBoolean
-    let randomStartIndex = Math.floor(Math.random() * width * width)
-    
-    let shipBlocks = []
+  const blocks = document.querySelectorAll("#computer .block")
 
-   for (let i = 0; i < ship.length; i++)
-        if (isHorizontal) {
-            shipBlocks.push(allBoardBlocks[Number(randomStartIndex) + i])
-        } else {
-            shipBlocks.push(allBoardBlocks[Number(randomStartIndex)+ i * width])
-        }
+  let placed = false
 
-        shipBlocks.forEach(shipBlock => {
-            shipBlock.classList.add(ship.name)
-            shipBlock.classList.add('taken')
-    })   
+  while (!placed) {
+    const isHorizontal = Math.random() < 0.5
+    const startIndex = Math.floor(Math.random() * width * width)
+
+    if (!fitsOnBoard(startIndex, isHorizontal, ship.length, width)) continue
+
+    const shipBlocks = buildShip(isHorizontal, startIndex, ship.length, width)
+
+    if (overlaps(shipBlocks, blocks)) continue
+
+    shipBlocks.forEach(squareIndex => {
+      blocks[squareIndex].classList.add(ship.name)
+      blocks[squareIndex].classList.add("taken")
+    })
+
+    placed = true
+  }
 }
 
 ships.forEach(ship => addShipPiece(ship))
