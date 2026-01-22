@@ -5,7 +5,7 @@ Battleship
 1. Populate the Gameboards / Initial Game State
 1.5 Create Ship Options
 2. Create ships with different sizes
-- Function to randomise the ships
+- Function to randomise the ships (for Computer) w/ Overflow and Overlap checks
 - Placing the ships (drag and drop)
 - Rotating the ships
 - Hit/Miss function
@@ -22,10 +22,4 @@ Level up
 Animations - missile, sound effect
 Power ups
 
-Phase 1 
 
-Select ships
-
-Phase 2 
-
-Game
