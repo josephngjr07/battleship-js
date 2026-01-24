@@ -1,7 +1,20 @@
-body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
+/* Using a Google Font (e.g., 'Stencil' or 'Roboto Condensed') */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
 
+body {
+    /* Military style header */
+    font-family: 'ITC Machine', 'Impact', sans-serif; 
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #010006; /* Dark background for contrast */
+    padding: 20px; 
+}
+
+.grid-label {
+    /* Clean font for grid coordinates (A-J, 1-10) */
+    font-family: 'Arial Black', Gadget, sans-serif;
+    font-weight: 800;
 }
 
 #game-boards {
@@ -96,3 +109,16 @@ body {
  height: 10px;
  margin: 3px;
 } 
+
+.hit {
+  background-color: red !important;
+}
+
+.miss {
+  background-color: rgba(255,255,255,0.3) !important;
+}
+
+/* Hide enemy ships: keep background board color, don't show ship colors */
+#computer .taken {
+  background-color: inherit;
+}
